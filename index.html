@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jovem Tech | Conectando Talentos do Maranhão</title>
+    <meta name="description" content="Portal oficial da turma do Programa Jovem Tech. A vitrine dos novos desenvolvedores e talentos de tecnologia do Maranhão.">
+    <meta property="og:title" content="Jovem Tech | Conectando Talentos do Maranhão">
+    <meta property="og:description" content="A vitrine dos novos desenvolvedores do Maranhão - Programa Jovem Tech">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Poppins para uma tipografia limpa e moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ========================================== -->
+    <!-- CABEÇALHO / MENU DE NAVEGAÇÃO              -->
+    <!-- ========================================== -->
+    <header class="header" id="mainHeader">
+        <div class="header-container">
+            <a href="#home" class="logo" id="siteLogo">
+                <span>Jovem</span> Tech
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#parceiros" class="nav-link">Parceiros</a>
+                <a href="#formacao" class="nav-link">Formação</a>
+                <a href="#polos" class="nav-link">Polos</a>
+                <a href="#devs" class="nav-link">Galeria Devs</a>
+                <a href="#projetos" class="nav-link">Projetos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-toggle" class="btn-theme" type="button" aria-label="Alternar tema">
+                    <span id="theme-icon">🌙</span> <span id="theme-text">Modo Claro</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========================================== -->
+        <!-- SEÇÃO HERO / APRESENTAÇÃO PRINCIPAL        -->
+        <!-- ========================================== -->
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <h1 class="hero-title">
+                    A vitrine dos novos <span>Desenvolvedores</span> do Maranhão
+                </h1>
+                <p class="hero-subtitle">
+                    Bem-vindo ao portal institucional da nossa turma do <strong>Jovem Tech</strong>. Aqui você encontra os projetos,
+                    portfólios e os perfis dos novos talentos prontos para transformar o mercado de tecnologia com inovação e impacto social.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#devs" class="btn-primary" id="btnHeroDevs">Conhecer Talentos</a>
+                    <a href="#sobre" class="btn-secondary" id="btnHeroSobre">Sobre o Programa</a>
+                </div>
+
+                <!-- Indicadores de destaque do programa -->
+                <div class="hero-stats" id="heroStats">
+                    <div class="stat-card">
+                        <span class="stat-number">60</span>
+                        <span class="stat-label">Bolsistas Selecionados</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Trilhas de Especialização</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Polos Tecnológicos</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Gratuito e com Bolsa</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: SOBRE O PROGRAMA                    -->
+        <!-- ========================================== -->
+        <section class="about-section" id="sobre">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Impacto & Transformação</span>
+                    <h2>Sobre o <span>Jovem Tech</span></h2>
+                    <p class="section-subtitle">
+                        Democratizando a formação tecnológica e conectando jovens de São Luís às oportunidades do mercado global.
+                    </p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-main-text">
+                        <h3>Uma iniciativa para o futuro do Maranhão</h3>
+                        <p class="about-lead">
+                            O <strong>Jovem Tech</strong> nasceu com a missão de democratizar o acesso à educação tecnológica de ponta.
+                            O programa oferta 60 bolsas integrais para jovens de 18 a 24 anos recém-formados no ensino médio da rede pública
+                            ou bolsistas integrais da rede privada.
+                        </p>
+                        <p>
+                            Criada como uma iniciativa estratégica para potencializar o ecossistema de tecnologia e inovação maranhense,
+                            a formação capacita os estudantes para atender às reais demandas do mercado de trabalho moderno, unindo
+                            teoria sólida, desafios práticos e desenvolvimento humano.
+                        </p>
+                    </div>
+
+                    <div class="about-pillars">
+                        <div class="pillar-card">
+                            <div class="pillar-icon">💡</div>
+                            <h4>Inclusão e Oportunidade</h4>
+                            <p>Bolsas de estudo que permitem dedicação exclusiva ao aprendizado técnico e comportamental.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <div class="pillar-icon">🚀</div>
+                            <h4>Foco no Mercado</h4>
+                            <p>Projetos desenvolvidos com base nos problemas reais das principais indústrias e empresas locais.</p>
+                        </div>
+                        <div class="pillar-card">
+                            <div class="pillar-icon">🤝</div>
+                            <h4>Desenvolvimento Integral</h4>
+                            <p>Equilíbrio entre lógica de programação (Hard Skills) e competências socioemocionais (Power Skills).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: PARCEIROS E APOIADORES              -->
+        <!-- ========================================== -->
+        <section class="partners-section" id="parceiros">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Aliança Estratégica</span>
+                    <h2>Nossos <span>Parceiros</span></h2>
+                    <p class="section-subtitle">
+                        O programa nasce da união entre o poder público, instituições de fomento científico e grandes forças do setor privado.
+                    </p>
+                </div>
+
+                <div class="partners-intro-box">
+                    <p>
+                        Viabilizado pelo <strong>Governo do Estado do Maranhão</strong> por meio da <strong>FAPEMA</strong> (Fundação de Amparo à Pesquisa e ao Desenvolvimento Científico e Tecnológico do Maranhão)
+                        e da <strong>EMAP (Porto do Itaqui)</strong>, em conjunto com grandes empresas regionais como o <strong>Grupo Mateus</strong> e o ecossistema do <strong>TEGRAM</strong>,
+                        com o apoio educacional da plataforma <strong>Alura</strong>. Essa aliança une fomento científico, investimento privado e visão de futuro.
+                    </p>
+                </div>
+
+                <div class="partners-grid" id="partnersGrid">
+                    <div class="partner-card">
+                        <div class="partner-badge">Fomento</div>
+                        <h3>FAPEMA</h3>
+                        <p>Fundação de Amparo à Pesquisa e Desenvolvimento Científico e Tecnológico do Maranhão.</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-badge">Governo</div>
+                        <h3>Governo do Maranhão</h3>
+                        <p>Políticas públicas de democratização da tecnologia e inclusão produtiva para a juventude.</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-badge">Logística & Indústria</div>
+                        <h3>EMAP / Porto do Itaqui</h3>
+                        <p>Empresa Maranhense de Administração Portuária, impulsionando a inovação logística portuária.</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-badge">Varejo & Tech</div>
+                        <h3>Grupo Mateus</h3>
+                        <p>Uma das maiores redes varejistas do país, abrindo portas para a inserção de novos programadores.</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-badge">Agronegócio & Porto</div>
+                        <h3>TEGRAM</h3>
+                        <p>Terminal de Grãos do Maranhão, apoiando o ecossistema e demandas do setor de exportação.</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-badge">Educação</div>
+                        <h3>Alura</h3>
+                        <p>Plataforma líder em tecnologia fornecendo conteúdos práticos, trilhas e formações estruturadas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: FORMAÇÃO E METODOLOGIA              -->
+        <!-- ========================================== -->
+        <section class="formation-section" id="formacao">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Metodologia Prática</span>
+                    <h2>Nossa <span>Formação</span></h2>
+                    <p class="section-subtitle">
+                        Combinação de autoestudo guiado na Alura, encontros práticos presenciais, mentoria intensiva e desenvolvimento de projetos reais.
+                    </p>
+                </div>
+
+                <div class="formation-journey">
+                    <!-- Etapa 1 -->
+                    <div class="journey-card">
+                        <div class="journey-step">01</div>
+                        <div class="journey-content">
+                            <h3>Fase 1: Base e Nivelamento (3 meses)</h3>
+                            <p>
+                                Todos os estudantes iniciam por uma trilha comum e intensiva de fundamentos. Nessa fase inicial são construídos os pilares essenciais:
+                            </p>
+                            <ul class="journey-list">
+                                <li>Lógica de Programação e Pensamento Computacional</li>
+                                <li>Estruturação e estilização web com HTML5 semântico e CSS3 moderno</li>
+                                <li>Interatividade dinâmica com Vanilla JavaScript</li>
+                                <li>Controle de versão colaborativo com Git e GitHub</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Etapa 2 -->
+                    <div class="journey-card">
+                        <div class="journey-step">02</div>
+                        <div class="journey-content">
+                            <h3>Fase 2: Especialização por Trilhas (3 meses)</h3>
+                            <p>
+                                Após consolidar a base unificada de 3 meses, os estudantes avançam para mais 3 meses focados na área que mais se alinha ao seu perfil e objetivos:
+                            </p>
+                            <div class="tracks-grid">
+                                <div class="track-item">
+                                    <span class="track-tag tag-frontend">Front-End</span>
+                                    <h4>Interfaces & UX</h4>
+                                    <p>Criação de páginas responsivas, acessibilidade, componentes interativos e experiência do usuário.</p>
+                                </div>
+                                <div class="track-item">
+                                    <span class="track-tag tag-backend">Back-End</span>
+                                    <h4>Sistemas & APIs</h4>
+                                    <p>Construção de lógica de negócios, integrações, APIs RESTful e modelagem de bancos de dados.</p>
+                                </div>
+                                <div class="track-item">
+                                    <span class="track-tag tag-dados">Área de Dados</span>
+                                    <h4>Análise & Inteligência</h4>
+                                    <p>Tratamento, consulta SQL, análise exploratória e interpretação de dados para tomada de decisões.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contraturno Integrado -->
+                    <div class="journey-card">
+                        <div class="journey-step">⚡</div>
+                        <div class="journey-content">
+                            <h3>Contraturnos: Power Skills & Prática (Integrado às Fases 1 e 2)</h3>
+                            <p>
+                                Os contraturnos acontecem em conjunto e simultaneamente ao longo de toda a Fase 1 e Fase 2, preparando os estudantes para a rotina real das empresas com foco em três pilares:
+                            </p>
+                            <ul class="journey-list">
+                                <li><strong>Metodologias Ágeis:</strong> Scrum, Kanban, gestão visual e organização em sprints.</li>
+                                <li><strong>Power Skills:</strong> Comunicação assertiva, trabalho em equipe, inteligência emocional e resolução de problemas.</li>
+                                <li><strong>Lifelong Learning:</strong> Autonomia para aprender novas tecnologias continuamente.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: POLOS E ANEXOS                      -->
+        <!-- ========================================== -->
+        <section class="polos-section" id="polos">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Espaços de Inovação</span>
+                    <h2>Polos e <span>Anexos</span></h2>
+                    <p class="section-subtitle">
+                        Ambientes físicos modernos estruturados para mentoria técnica, desenvolvimento prático e treinamento comportamental.
+                    </p>
+                </div>
+
+                <div class="polos-grid">
+                    <!-- Polo UNDB -->
+                    <div class="polo-card">
+                        <div class="polo-img-wrapper">
+                            <img src="fotos/hub_undb.jpg" alt="Foto do HUB da UNDB, polo principal do Jovem Tech no Renascença" class="polo-img">
+                            <span class="polo-badge">Polo Principal</span>
+                        </div>
+                        <div class="polo-info">
+                            <h3>HUB da UNDB</h3>
+                            <p class="polo-location">📍 Bairro do Renascença - São Luís/MA</p>
+                            <p>
+                                O polo principal do programa conta com laboratórios modernos equipados com computadores de alta performance,
+                                salas de mentoria e espaços integrados para desenvolvimento coletivo e acompanhamento pedagógico.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Anexo PULSE -->
+                    <div class="polo-card">
+                        <div class="polo-img-wrapper">
+                            <img src="fotos/pulse.jpg" alt="Foto do anexo PULSE na Cohama, onde ocorrem os contraturnos do Jovem Tech" class="polo-img">
+                            <span class="polo-badge">Anexo Prático</span>
+                        </div>
+                        <div class="polo-info">
+                            <h3>Anexo PULSE</h3>
+                            <p class="polo-location">📍 Bairro da Cohama - São Luís/MA</p>
+                            <p>
+                                Espaço colaborativo de inovação onde acontecem as atividades presenciais de contraturno às quartas e sextas-feiras,
+                                com foco em dinâmicas de grupo, metodologias ágeis, apresentações técnicas e simulações corporativas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: GALERIA DOS DESENVOLVEDORES         -->
+        <!-- ========================================== -->
+        <section class="devs-section" id="devs">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Nossos Talentos</span>
+                    <h2>Galeria dos <span>Desenvolvedores</span></h2>
+                    <p class="section-subtitle">
+                        Conheça os profissionais formados na turma. Navegue pelos perfis, filtre por especialidade técnica e acesse portfólios, GitHub e contatos.
+                    </p>
+                </div>
+
+                <!-- Barra de Busca e Filtro de Trilhas -->
+                <div class="devs-filters">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Buscar por nome, habilidade ou tecnologia..." aria-label="Buscar desenvolvedores">
+                    </div>
+                    <div class="filter-buttons" id="filterButtons">
+                        <button class="filter-btn active" data-filter="all" type="button">Todos</button>
+                        <button class="filter-btn" data-filter="back-end" type="button">Back-End</button>
+                        <button class="filter-btn" data-filter="front-end" type="button">Front-End</button>
+                        <button class="filter-btn" data-filter="dados" type="button">Dados</button>
+                    </div>
+                </div>
+
+                <!-- Contador de resultados -->
+                <p id="devCountMessage" class="dev-count-message">Exibindo desenvolvedores da turma</p>
+
+                <!-- Grade de cards dos desenvolvedores -->
+                <div class="devs-grid" id="devsGrid">
+
+                    <!-- CARD DO ALUNO 1: KESSYA WDANMYLLA -->
+                    <article class="dev-card" data-category="back-end">
+                        <div class="card-header">
+                            <img src="fotos/kessya.jpeg" alt="Foto da desenvolvedora Kessya Wdanmylla" class="dev-avatar">
+                            <div class="dev-info-header">
+                                <span class="dev-badge badge-backend">Back-End</span>
+                                <h3 class="dev-name">Kessya Wdanmylla</h3>
+                                <span class="dev-location">📍 São Luís, MA</span>
+                            </div>
+                        </div>
+                        <p class="dev-bio">
+                            Desenvolvedora Back-End focada na criação de APIs eficientes, arquitetura limpa e integração de banco de dados.
+                            Entusiasta por solucionar problemas lógicos complexos e otimizar processos de software.
+                        </p>
+                        <div class="dev-skills">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="social-links">
+                                <a href="https://github.com/altsnip3r" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon">GitHub</a>
+                                <a href="https://linkedin.com/in/kessya-wdanmylla" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon">LinkedIn</a>
+                            </div>
+                            <a href="mailto:kessyawdanmylla@gmail.com" class="btn-perfil">Entrar em Contato</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD DO ALUNO 2: FRONT-END (EXEMPLO DA TURMA) -->
+                    <article class="dev-card" data-category="front-end">
+                        <div class="card-header">
+                            <div class="dev-avatar dev-avatar-placeholder">FT</div>
+                            <div class="dev-info-header">
+                                <span class="dev-badge badge-frontend">Front-End</span>
+                                <h3 class="dev-name">Desenvolvedor Front-End</h3>
+                                <span class="dev-location">📍 São Luís, MA</span>
+                            </div>
+                        </div>
+                        <p class="dev-bio">
+                            Especialista em construir interfaces responsivas, acessíveis e focadas na melhor experiência do usuário (UI/UX).
+                            Capacidade de transformar designs complexos em código limpo e performático.
+                        </p>
+                        <div class="dev-skills">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3 Moderno</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Mobile First</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="social-links">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon">GitHub</a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon">LinkedIn</a>
+                            </div>
+                            <a href="#contato" class="btn-perfil">Ver Perfil</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD DO ALUNO 3: DADOS (EXEMPLO DA TURMA) -->
+                    <article class="dev-card" data-category="dados">
+                        <div class="card-header">
+                            <div class="dev-avatar dev-avatar-placeholder">DA</div>
+                            <div class="dev-info-header">
+                                <span class="dev-badge badge-dados">Dados</span>
+                                <h3 class="dev-name">Analista de Dados Júnior</h3>
+                                <span class="dev-location">📍 São Luís, MA</span>
+                            </div>
+                        </div>
+                        <p class="dev-bio">
+                            Focado em análise exploratória, modelagem e visualização de dados operacionais e de logística.
+                            Interpreta dados para gerar inteligência de negócio e apoiar tomadas de decisões ágeis.
+                        </p>
+                        <div class="dev-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Estatística</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="social-links">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon">GitHub</a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon">LinkedIn</a>
+                            </div>
+                            <a href="#contato" class="btn-perfil">Ver Perfil</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD DO ALUNO 4: BACK-END (EXEMPLO DA TURMA) -->
+                    <article class="dev-card" data-category="back-end">
+                        <div class="card-header">
+                            <div class="dev-avatar dev-avatar-placeholder">BK</div>
+                            <div class="dev-info-header">
+                                <span class="dev-badge badge-backend">Back-End</span>
+                                <h3 class="dev-name">Desenvolvedor Back-End</h3>
+                                <span class="dev-location">📍 São Luís, MA</span>
+                            </div>
+                        </div>
+                        <p class="dev-bio">
+                            Foco em arquitetura de microsserviços, modelagem relacional e construção de lógica de autenticação segura.
+                            Experiência em testes unitários e trabalho com metodologias ágeis.
+                        </p>
+                        <div class="dev-skills">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="social-links">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon">GitHub</a>
+                                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon">LinkedIn</a>
+                            </div>
+                            <a href="#contato" class="btn-perfil">Ver Perfil</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: PROJETOS EM DESTAQUE                -->
+        <!-- ========================================== -->
+        <section class="projects-section" id="projetos">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Aplicações Práticas</span>
+                    <h2>Projetos em <span>Destaque</span></h2>
+                    <p class="section-subtitle">
+                        Soluções reais que combinam lógica de programação, arquitetura limpa e foco nos desafios do ecossistema local do Maranhão.
+                    </p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- PROJETO 1: SISTEMA MODULAR -->
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-category">Logística & Varejo</span>
+                            <h3 class="project-title">Sistema de Gestão Modular (Itaqui & Mateus)</h3>
+                            <p class="project-description">
+                                Solução arquitetada para atender demandas do Porto do Itaqui e do Grupo Mateus,
+                                integrando funcionalidades de logística portuária, controle de estoque e auditoria de movimentação.
+                                A estrutura modular permite que cada instituição utilize os módulos relevantes para sua operação com alta escalabilidade.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">REST API</span>
+                                <span class="project-tag">Arquitetura Limpa</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-project primary">Ver Repositório</a>
+                            <a href="#contato" class="btn-project secondary">Documentação</a>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 2: PORTAL VITRINE TECH -->
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-category">Portal Institucional</span>
+                            <h3 class="project-title">Hub Oficial Jovem Tech</h3>
+                            <p class="project-description">
+                                Plataforma web responsiva e centralizadora construída para dar visibilidade aos perfis profissionais,
+                                competências técnicas e entregas práticas da turma, conectando diretamente estudantes e empresas parceiras.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML5 Semântico</span>
+                                <span class="project-tag">CSS3 Responsivo</span>
+                                <span class="project-tag">JavaScript DOM</span>
+                                <span class="project-tag">Filtro Interativo</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com/altsnip3r" target="_blank" rel="noopener noreferrer" class="btn-project primary">Código Fonte</a>
+                            <a href="#devs" class="btn-project secondary">Ver Galeria</a>
+                        </div>
+                    </article>
+
+                    <!-- PROJETO 3: MONITORAMENTO REGIONAL -->
+                    <article class="project-card">
+                        <div class="project-header">
+                            <span class="project-category">Dados & Indicadores</span>
+                            <h3 class="project-title">Dashboard de Indicadores do Maranhão</h3>
+                            <p class="project-description">
+                                Painel analítico com tratamento de dados públicos sobre desenvolvimento econômico, oportunidades de capacitação
+                                e fluxo comercial do Maranhão, demonstrando a aplicação prática da trilha de dados na tomada de decisões.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Análise de Dados</span>
+                                <span class="project-tag">SQL</span>
+                                <span class="project-tag">Dashboards</span>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-project primary">Ver Projeto</a>
+                            <a href="#contato" class="btn-project secondary">Relatório</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: PERGUNTAS FREQUENTES (FAQ)          -->
+        <!-- ========================================== -->
+        <section class="faq-section" id="faq">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Tire Suas Dúvidas</span>
+                    <h2>Perguntas <span>Frequentes</span></h2>
+                    <p class="section-subtitle">
+                        Respostas rápidas sobre a dinâmica de contratação dos desenvolvedores e o funcionamento do programa.
+                    </p>
+                </div>
+
+                <div class="faq-accordion" id="faqAccordion">
+
+                    <!-- ITEM 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Como posso contratar um desenvolvedor da turma?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Você pode entrar em contato diretamente com o estudante através dos links de e-mail, GitHub ou LinkedIn
+                                disponíveis nos cards da <a href="#devs">Galeria de Desenvolvedores</a>. Empresas e departamentos de RH
+                                também podem nos enviar uma mensagem diretamente através do formulário de contato abaixo para conectar vagas abertas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Qual o nível de autonomia dos desenvolvedores formados?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Os estudantes passam por um programa intensivo que contempla fundamentos sólidos de lógica, versionamento com Git,
+                                e projetos práticos em equipe com metodologias ágeis. Eles estão aptos a atuar como desenvolvedores Júnior ou estagiários,
+                                com excelente capacidade de aprender novas ferramentas e se integrar à cultura de tecnologia da sua empresa.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Quais são as áreas de especialização dos estudantes?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                O programa contempla três trilhas estratégicas de formação: <strong>Front-End</strong> (interfaces web e experiência do usuário),
+                                <strong>Back-End</strong> (lógica de negócios, APIs e bancos de dados) e <strong>Área de Dados</strong> (análise, relatórios e inteligência).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>O que difere o Jovem Tech de um curso comum de programação?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                A imersão em problemas reais do ecossistema local do Maranhão (como os setores de logística do Porto do Itaqui e varejo do Grupo Mateus),
+                                a mentoria presencial contínua nos polos UNDB e PULSE, e o foco rigoroso em Power Skills (comunicação assertiva, resolução ágil de problemas e trabalho colaborativo).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>O curso é gratuito ou oferece algum tipo de bolsa?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                O programa é 100% gratuito e viabilizado por bolsas integrais de estudo fomentadas pelo Governo do Estado do Maranhão por meio da FAPEMA,
+                                garantindo inclusão socioeconômica e suporte financeiro para que os estudantes se dediquem integralmente aos estudos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ITEM 6 -->
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>Como participar das próximas turmas do Jovem Tech?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Os editais de abertura e critérios de seleção para novas turmas são divulgados oficialmente nos canais do Governo do Maranhão e da FAPEMA.
+                                As vagas são destinadas a jovens de 18 a 24 anos concluintes do ensino médio na rede pública ou bolsistas integrais.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SEÇÃO: CONTATO E CONEXÃO INSTITUCIONAL     -->
+        <!-- ========================================== -->
+        <section class="contact-section" id="contato">
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Fale Conosco</span>
+                    <h2>Conecte-se à nossa <span>Turma</span></h2>
+                    <p class="section-subtitle">
+                        Sua empresa busca novos talentos ou tem interesse em parcerias com o programa? Envie uma mensagem diretamente para nossa coordenação e estudantes.
+                    </p>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Informações de Contato -->
+                    <div class="contact-info">
+                        <h3>Oportunidades & Recrutamento</h3>
+                        <p>
+                            Estamos à disposição para apresentar nossos desenvolvedores, agendar entrevistas técnicas ou apresentar nossos projetos desenvolvidos.
+                        </p>
+
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <span class="contact-icon">📍</span>
+                                <div>
+                                    <strong>Polos Presenciais:</strong>
+                                    <p>HUB da UNDB (Renascença) e Anexo PULSE (Cohama) - São Luís, Maranhão</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">✉️</span>
+                                <div>
+                                    <strong>E-mail Institucional:</strong>
+                                    <p>kessyawdanmylla@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <span class="contact-icon">🤝</span>
+                                <div>
+                                    <strong>Apoio Institucional:</strong>
+                                    <p>FAPEMA • Governo do Maranhão • Porto do Itaqui • Grupo Mateus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário de Mensagem -->
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Seu Nome ou Empresa *</label>
+                            <input type="text" id="contactName" placeholder="Ex: Tech Solutions / Ana Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Seu E-mail Profissional *</label>
+                            <input type="email" id="contactEmail" placeholder="contato@empresa.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Assunto</label>
+                            <select id="contactSubject">
+                                <option value="recrutamento">Vagas & Recrutamento de Talentos</option>
+                                <option value="parceria">Parceria Institucional ou Projeto</option>
+                                <option value="duvidas">Dúvidas sobre o Programa</option>
+                                <option value="outro">Outro assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Sua Mensagem *</label>
+                            <textarea id="contactMessage" rows="4" placeholder="Descreva sua oportunidade, pergunta ou proposta de projeto..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit" id="btnSubmitForm">Enviar Mensagem</button>
+                        <p id="formFeedback" class="form-feedback" style="display: none;"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- RODAPÉ INSTITUCIONAL                       -->
+    <!-- ========================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo"><span>Jovem</span> Tech</div>
+                <p>
+                    A vitrine dos novos desenvolvedores de software do Maranhão. Capacitação técnica, inclusão produtiva e inovação para o ecossistema regional.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#sobre">Sobre o Programa</a></li>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#formacao">Trilhas de Formação</a></li>
+                    <li><a href="#polos">Polos e Anexos</a></li>
+                    <li><a href="#devs">Galeria de Desenvolvedores</a></li>
+                    <li><a href="#projetos">Projetos em Destaque</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Parceiros Oficiais</h4>
+                <ul>
+                    <li><a href="https://www.fapema.br" target="_blank" rel="noopener noreferrer">FAPEMA</a></li>
+                    <li><a href="https://www.portodoitaqui.ma.gov.br" target="_blank" rel="noopener noreferrer">Porto do Itaqui (EMAP)</a></li>
+                    <li><a href="https://www.grupomateus.com.br" target="_blank" rel="noopener noreferrer">Grupo Mateus</a></li>
+                    <li><a href="https://www.alura.com.br" target="_blank" rel="noopener noreferrer">Alura</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jovem Tech Maranhão. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script com lógica Vanilla JS limpa -->
+    <script src="script.js"></script>
+</body>
+
+</html>
