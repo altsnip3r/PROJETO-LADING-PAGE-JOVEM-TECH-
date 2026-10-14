@@ -745,11 +745,11 @@ img {
 
 /* Foto redonda */
 .dev-avatar {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 80%;
   object-fit: cover;
-  border: 2px solid var(--accent-green);
+  border: 0px solid var(--accent-green);
   flex-shrink: 0;
 }
 
@@ -841,27 +841,31 @@ img {
 
 /* Rodapé do card */
 .card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--card-border);
-  padding-top: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--card-border);
+    padding-top: 0.9rem;
 }
 
 .social-links {
-  display: flex;
-  gap: 0.8rem;
+    display: flex;
+    flex-direction: column; /* Faz com que fiquem empilhados um abaixo do outro como na foto original */
+    gap: 0.3rem;            /* Espacinho vertical bem curto entre eles */
 }
 
 .social-icon {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 600;
-  transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-muted); /* Mantém a cor discreta de texto secundário */
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .social-icon:hover {
-  color: var(--accent-green);
+    color: var(--accent-green); /* Fica verde ao passar o mouse, igual aos links do site */
 }
 
 /* Botão de contato */
@@ -871,7 +875,7 @@ img {
   font-size: 0.78rem;
   font-weight: 600;
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  border-radius:7px;
   border: 1px solid var(--card-border);
   transition: all 0.2s ease;
 }
