@@ -542,12 +542,16 @@ img {
 }
 
 .polos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .polo-card {
+  display: flex; /* Coloca a imagem à esquerda e o texto à direita */
+  flex-direction: row;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
@@ -562,7 +566,8 @@ img {
 
 .polo-img-wrapper {
   position: relative;
-  height: 280px;
+  width: 50%; /* Ocupa a metade esquerda */
+  min-height: 575px;
   overflow: hidden;
   background-color: #071120;
 }
@@ -582,40 +587,58 @@ img {
   filter: contrast(1.08) saturate(1.12) brightness(1.04);
 }
 
+.polo-info {
+  width: 50%; /* Ocupa a metade direita (texto) */
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Tag/Badge destacada em cima do título */
 .polo-badge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: rgba(5, 11, 20, 0.8);
-  backdrop-filter: blur(6px);
+  display: inline-block;
+  align-self: flex-start; /* Faz a tag ocupar apenas o espaço do seu texto */
+  margin-bottom: 0.8rem;  /* Espaço entre a tag e o título */
+  background-color: rgba(0, 255, 135, 0.1);
   color: var(--accent-green);
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 0.3rem 0.7rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 20px;
-  border: 1px solid rgba(0, 255, 135, 0.3);
-}
-
-.polo-info {
-  padding: 1.5rem;
+  border: 1px solid rgba(0, 255, 135, 0.4);
 }
 
 .polo-info h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-bottom: 0.3rem;
+  color: #fff;
 }
 
 .polo-location {
   font-size: 0.82rem;
   color: var(--accent-blue-light);
   font-weight: 500;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .polo-info p {
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+/* Responsivo para celulares (volta a empilhar a imagem em cima do texto) */
+@media (max-width: 768px) {
+  .polo-card {
+    flex-direction: column;
+  }
+  .polo-img-wrapper, .polo-info {
+    width: 100%;
+  }
+  .polo-img-wrapper {
+    min-height: 300px;
+  }
 }
 
 /* ========================================================== */

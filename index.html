@@ -273,51 +273,89 @@
         <!-- SEÇÃO: POLOS E ANEXOS                      -->
         <!-- ========================================== -->
         <section class="polos-section" id="polos">
-            <div class="section-container">
-                <div class="section-header">
-                    <span class="section-tag">Espaços de Inovação</span>
-                    <h2>Polos e <span>Anexos</span></h2>
-                    <p class="section-subtitle">
-                        Ambientes físicos modernos estruturados para mentoria técnica, desenvolvimento prático e treinamento comportamental.
+    <div class="section-container">
+        <div class="section-header">
+            <span class="section-tag">Espaços de Inovação</span>
+            <h2>Polos e <span>Anexos</span></h2>
+            <p class="section-subtitle">
+                Ambientes físicos modernos estruturados para mentoria técnica, desenvolvimento prático e treinamento comportamental.
+            </p>
+        </div>
+
+        <div class="polos-grid">
+            <!-- Polo UNDB -->
+            <div class="polo-card">
+                <div class="polo-img-wrapper">
+                    <!-- Track do Carrossel (Coloque quantas fotos quiser aqui dentro) -->
+                    <div class="carousel-track">
+                        <img src="fotos/hub_undb.jpg" alt="Foto do HUB da UNDB - 1" class="polo-img active">
+                        <img src="fotos/hub_undb_2.jpg" alt="Foto do HUB da UNDB - 2" class="polo-img">
+                        <!-- <img src="fotos/hub_undb_3.jpg" alt="Foto do HUB da UNDB - 3" class="polo-img"> -->
+                    </div>
+
+                    <!-- Botões de Navegação (Setas Tech) -->
+                    <button class="carousel-btn prev-btn" aria-label="Foto anterior">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-btn next-btn" aria-label="Próxima foto">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
+                    <!-- Indicadores (Bolinhas) -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                        <span class="indicator" data-index="1"></span>
+                    </div>
+                </div>
+
+                <div class="polo-info">
+                    <span class="polo-badge">POLO PRINCIPAL</span>
+                    <h3>HUB da UNDB</h3>
+                    <p class="polo-location">📍 Bairro do Renascença - São Luís/MA</p>
+                    <p>
+                        O polo principal do programa conta com laboratórios modernos equipados com computadores de alta performance,
+                        salas de mentoria e espaços integrados para desenvolvimento coletivo e acompanhamento pedagógico.
                     </p>
                 </div>
+            </div>
 
-                <div class="polos-grid">
-                    <!-- Polo UNDB -->
-                    <div class="polo-card">
-                        <div class="polo-img-wrapper">
-                            <img src="fotos/hub_undb.jpg" alt="Foto do HUB da UNDB, polo principal do Jovem Tech no Renascença" class="polo-img">
-                            <span class="polo-badge">Polo Principal</span>
-                        </div>
-                        <div class="polo-info">
-                            <h3>HUB da UNDB</h3>
-                            <p class="polo-location">📍 Bairro do Renascença - São Luís/MA</p>
-                            <p>
-                                O polo principal do programa conta com laboratórios modernos equipados com computadores de alta performance,
-                                salas de mentoria e espaços integrados para desenvolvimento coletivo e acompanhamento pedagógico.
-                            </p>
-                        </div>
+            <!-- Anexo PULSE -->
+            <div class="polo-card">
+                <div class="polo-img-wrapper">
+                    <!-- Track do Carrossel do Anexo PULSE -->
+                    <div class="carousel-track">
+                        <img src="fotos/pulse.jpg" alt="Foto do anexo PULSE - 1" class="polo-img active">
+                        <img src="fotos/pulse_2.jpg" alt="Foto do anexo PULSE - 2" class="polo-img">
                     </div>
 
-                    <!-- Anexo PULSE -->
-                    <div class="polo-card">
-                        <div class="polo-img-wrapper">
-                            <img src="fotos/pulse.jpg" alt="Foto do anexo PULSE na Cohama, onde ocorrem os contraturnos do Jovem Tech" class="polo-img">
-                            <span class="polo-badge">Anexo Prático</span>
-                        </div>
-                        <div class="polo-info">
-                            <h3>Anexo PULSE</h3>
-                            <p class="polo-location">📍 Bairro da Cohama - São Luís/MA</p>
-                            <p>
-                                Espaço colaborativo de inovação onde acontecem as atividades presenciais de contraturno às quartas e sextas-feiras,
-                                com foco em dinâmicas de grupo, metodologias ágeis, apresentações técnicas e simulações corporativas.
-                            </p>
-                        </div>
+                    <!-- Botões de Navegação (Setas Tech) -->
+                    <button class="carousel-btn prev-btn" aria-label="Foto anterior">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <button class="carousel-btn next-btn" aria-label="Próxima foto">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+
+                    <!-- Indicadores (Bolinhas) -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-index="0"></span>
+                        <span class="indicator" data-index="1"></span>
                     </div>
                 </div>
-            </div>
-        </section>
 
+                <div class="polo-info">
+                    <span class="polo-badge">POLO SECUNDÁRIO</span>
+                    <h3>Anexo PULSE</h3>
+                    <p class="polo-location">📍 Bairro da Cohama - São Luís/MA</p>
+                    <p>
+                        Espaço colaborativo de inovação onde acontecem as atividades presenciais de contraturno às quartas e sextas-feiras,
+                        com foco em dinâmicas de grupo, metodologias ágeis, apresentações técnicas e simulações corporativas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
         <!-- ========================================== -->
         <!-- SEÇÃO: GALERIA DOS DESENVOLVEDORES         -->
         <!-- ========================================== -->
@@ -365,18 +403,21 @@
                             Entusiasta por solucionar problemas lógicos complexos e otimizar processos de software.
                         </p>
                         <div class="dev-skills">
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">JAVASCRIPT</span>
+                            <span class="skill-tag">PYTHON</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
                             <span class="skill-tag">SQL</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">CIBERSECURITY</span>
                         </div>
                         <div class="card-footer">
                             <div class="social-links">
                                 <a href="https://github.com/altsnip3r" target="_blank" rel="noopener noreferrer" title="GitHub" class="social-icon">GitHub</a>
                                 <a href="https://linkedin.com/in/kessya-wdanmylla" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="social-icon">LinkedIn</a>
+                                <a href="https://portfolio-jovem-tech.vercel.app/" target="_blank" rel="noopener noreferrer" title="Portfólio" class="social-icon">Portfólio</a>
+                                <a href="mailto:kessyawdanmylla@gmail.com" class="social-icon">Email</a>
                             </div>
-                            <a href="mailto:kessyawdanmylla@gmail.com" class="btn-perfil">Entrar em Contato</a>
+                            <a href="#contato" class="btn-perfil">Entre em Contato</a>
                         </div>
                     </article>
 

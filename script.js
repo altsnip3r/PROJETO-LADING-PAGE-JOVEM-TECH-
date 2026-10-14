@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Roda uma vez no início para contar os cards iniciais
     filtrarDesenvolvedores();
 
-
     // ======================================================
     // 3. PERGUNTAS FREQUENTES (FAQ ACCORDION)
     // ======================================================
@@ -156,3 +155,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// ======================================================
+    // 5. CARROSSEL DE FOTOS DOS POLOS
+    // ======================================================
+    const cards = document.querySelectorAll('.polo-card');
+
+    cards.forEach(card => {
+        const track = card.querySelector('.carousel-track');
+        if (!track) return;
+
+        const slides = track.querySelectorAll('.polo-img');
+        const nextButton = card.querySelector('.next-btn');
+        const prevButton = card.querySelector('.prev-btn');
+        const indicators = card.querySelectorAll('.indicator');
+        
+        let currentIndex = 0;
+
+        function updateCarousel(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            currentIndex = index;
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                let nextIndex = (currentIndex + 1) % slides.length;
+                updateCarousel(nextIndex);
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel(prevIndex);
+            });
+        }
+
+        indicators.forEach((indicator, i) => {
+            indicator.addEventListener('click', () => {
+                updateCarousel(i);
+            });
+        });
+    });
