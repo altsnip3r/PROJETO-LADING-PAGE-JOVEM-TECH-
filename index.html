@@ -229,24 +229,28 @@
                                 Após consolidar a base unificada de 3 meses, os estudantes avançam para mais 3 meses focados na área que mais se alinha ao seu perfil e objetivos:
                             </p>
                             <div class="tracks-grid">
-                                <div class="track-item">
-                                    <span class="track-tag tag-frontend">Front-End</span>
-                                    <h4>Interfaces & UX</h4>
-                                    <p>Criação de páginas responsivas, acessibilidade, componentes interativos e experiência do usuário.</p>
-                                </div>
-                                <div class="track-item">
-                                    <span class="track-tag tag-backend">Back-End</span>
-                                    <h4>Sistemas & APIs</h4>
-                                    <p>Construção de lógica de negócios, integrações, APIs RESTful e modelagem de bancos de dados.</p>
-                                </div>
-                                <div class="track-item">
-                                    <span class="track-tag tag-dados">Área de Dados</span>
-                                    <h4>Análise & Inteligência</h4>
-                                    <p>Tratamento, consulta SQL, análise exploratória e interpretação de dados para tomada de decisões.</p>
-                                </div>
-                            </div>
+    <div class="track-item clickable-track" data-track-target="front-end" title="Clique para ver projetos de Front-End">
+        <span class="track-tag tag-frontend">Front-End</span>
+        <h4>Interfaces & UX</h4>
+        <p>Criação de páginas responsivas, acessibilidade, componentes interativos e experiência do usuário.</p>
+    </div>
+    <div class="track-item clickable-track" data-track-target="back-end" title="Clique para ver projetos de Back-End">
+        <span class="track-tag tag-backend">Back-End</span>
+        <h4>Sistemas & APIs</h4>
+        <p>Construção de lógica de negócios, integrações, APIs RESTful e modelagem de bancos de dados.</p>
+    </div>
+    <div class="track-item clickable-track" data-track-target="dados" title="Clique para ver projetos de Dados">
+        <span class="track-tag tag-dados">Área de Dados</span>
+        <h4>Análise & Inteligência</h4>
+        <p>Tratamento, consulta SQL, análise exploratória e interpretação de dados para tomada de decisões.</p>
+    </div>
+    <div class="track-item clickable-track" data-track-target="fullstack" title="Clique para ver projetos Fullstack">
+        <span class="track-tag tag-fullstack">Fullstack</span>
+        <h4>Aplicações Completas</h4>
+        <p>Integração de front-end reativo com back-end robusto, APIs e banco de dados relacional.</p>
+    </div>
+</div>
                         </div>
-                    </div>
 
                     <!-- Contraturno Integrado -->
                     <div class="journey-card">
@@ -375,7 +379,8 @@
                         <button class="filter-btn" data-filter="back-end" type="button">Back-End</button>
                         <button class="filter-btn" data-filter="front-end" type="button">Front-End</button>
                         <button class="filter-btn" data-filter="dados" type="button">Dados</button>
-                    </div>
+                        <button class="filter-btn" data-filter="fullstack" type="button">Fullstack</button>
+                    </div>      
                 </div>
 
                 <!-- Contador de resultados -->
@@ -785,8 +790,18 @@
         <a href="#contato" class="btn-perfil">Entre em Contato</a>
     </div>
 </article>
+</div>      
+<!-- FECHA DEVSGRID  -->
 
-                  
+<!-- Botão Mostrar Mais / Mostrar Menos -->
+
+                <div class="load-more-container" id="loadMoreDevsContainer">
+                    <button id="btnToggleDevs" class="btn-load-more" type="button">
+                        <span id="btnToggleDevsText">Mostrar Mais Desenvolvedores</span>
+                        
+                    </button>
+                </div>
+            </div> <!-- Fecha section-container -->   
 
 
 

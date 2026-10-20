@@ -710,16 +710,17 @@ img {
   margin-bottom: 2rem;
 }
 
-/* ========================================================== */
-/* GRADE DE DEVS (CARDS DOS ESTUDANTES)                      */
-/* ========================================================== */
+/* ========================================================
+   GRADE DE DEVS CORRIGIDA (Grid Responsivo e Alturas Iguais)
+   ======================================================== */
 .devs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+  align-items: stretch;
 }
 
-/* O cartão do aluno */
+/* Card uniforme com altura igual */
 .dev-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -727,12 +728,25 @@ img {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .dev-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent-green);
+}
+
+/* Empurra o rodapé para baixo, nivelando todos os botões */
+.dev-bio {
+  flex-grow: 1;
+}
+
+/* Oculta os cards adicionais até o clique em Mostrar Mais */
+.dev-card.dev-hidden {
+  display: none !important;
 }
 
 /* Topo do card: foto + informações */
@@ -743,25 +757,14 @@ img {
   margin-bottom: 1rem;
 }
 
-/* Foto redonda */
+/* Foto redonda uniforme */
 .dev-avatar {
-  width: 70px;
-  height: 70px;
-  border-radius: 80%;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
   object-fit: cover;
-  border: 0px solid var(--accent-green);
+  border: 2px solid var(--card-border);
   flex-shrink: 0;
-}
-
-/* Placeholder caso não tenha foto */
-.dev-avatar-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--tag-bg);
-  color: var(--accent-green);
-  font-weight: 700;
-  font-size: 1.2rem;
 }
 
 .dev-info-header {
@@ -770,7 +773,7 @@ img {
   gap: 0.3rem;
 }
 
-/* Etiquetas de trilha */
+/* Badges das Trilhas */
 .dev-badge {
   font-size: 0.7rem;
   font-weight: 700;
@@ -799,34 +802,28 @@ img {
   border: 1px solid rgba(16, 185, 129, 0.4);
 }
 
-/* Nome do aluno */
-.dev-name {
-  font-size: 1.1rem;
-  color: var(--text-main);
-  margin: 0;
+.badge-fullstack {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
-/* Localização */
+.dev-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
 .dev-location {
   font-size: 0.78rem;
   color: var(--text-muted);
 }
 
-/* Bio / Descrição */
-.dev-bio {
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 1.2rem;
-  flex-grow: 1;
-}
-
-/* Tags de tecnologias */
 .dev-skills {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .skill-tag {
@@ -834,57 +831,186 @@ img {
   color: var(--text-main);
   font-size: 0.72rem;
   font-weight: 500;
-  padding: 0.3rem 0.6rem;
+  padding: 0.25rem 0.55rem;
   border-radius: 4px;
   border: 1px solid var(--card-border);
 }
 
-/* Rodapé do card */
 .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--card-border);
-    padding-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--card-border);
+  padding-top: 1rem;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 .social-links {
-    display: flex;
-    flex-direction: column; /* Faz com que fiquem empilhados um abaixo do outro como na foto original */
-    gap: 0.3rem;            /* Espacinho vertical bem curto entre eles */
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .social-icon {
-    display: inline-flex;
-    align-items: center;
-    color: var(--text-muted); /* Mantém a cor discreta de texto secundário */
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s ease;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
 }
 
 .social-icon:hover {
-    color: var(--accent-green); /* Fica verde ao passar o mouse, igual aos links do site */
+  color: var(--accent-green);
 }
 
-/* Botão de contato */
 .btn-perfil {
-  background-color: rgba(255, 255, 255, 0.06);
-  color: var(--text-main);
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.4rem 0.8rem;
-  border-radius:7px;
+  background-color: var(--tag-bg);
+  color: var(--accent-green);
   border: 1px solid var(--card-border);
+  padding: 0.35rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
   transition: all 0.2s ease;
 }
 
 .btn-perfil:hover {
   background-color: var(--accent-green);
   color: #050b14;
+}
+
+/* ========================================================
+   ESTILOS DO BOTÃO MOSTRAR MAIS E NOVAS TRILHAS
+   ======================================================== */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-load-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-load-more:hover {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+.btn-load-more-icon {
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+/* Trilhas clicáveis na seção de formação */
+.track-item.clickable-track {
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.track-item.clickable-track:hover {
+  transform: translateY(-4px);
   border-color: var(--accent-green);
 }
+
+.tag-fullstack {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+/* Filtros por tecnologia na seção de projetos */
+.projects-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.projects-track-filters {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.proj-filter-btn {
+  padding: 0.45rem 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.proj-filter-btn:hover {
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+.proj-filter-btn.active {
+  background-color: var(--accent-green);
+  color: #0b0f19;
+  border-color: var(--accent-green);
+}
+
+.projects-tech-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tech-filter-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tech-chip {
+  padding: 0.25rem 0.65rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--card-border);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tech-chip:hover {
+  color: var(--text-main);
+  border-color: var(--accent-green);
+}
+
+.tech-chip.active {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: var(--accent-green);
+  border-color: var(--accent-green);
+  font-weight: 600;
+}
+
+.project-card.proj-hidden {
+  display: none !important;
+}
+
 
 /* ========================================================== */
 /* SEÇÃO PROJETOS EM DESTAQUE                                 */

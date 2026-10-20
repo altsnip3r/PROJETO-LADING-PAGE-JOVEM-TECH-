@@ -1,15 +1,3 @@
-Nenhum selecionado
-
-Pular para o conteúdo
-Como usar o Gmail com leitores de tela
-1 de 87
-(sem assunto)
-Caixa de entrada
-
-Kessya Wdanmylla <kessyawdanmylla@gmail.com>
-09:36 (há 0 minuto)
-para mim
-
 // ==========================================================
 // PORTAL JOVEM TECH - SCRIPT DE INTERATIVIDADE
 // Desenvolvido com JavaScript para aprendizado
@@ -26,10 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
-            // Adiciona ou remove a classe 'light-theme' no <body>
             document.body.classList.toggle('light-theme');
 
-            // Verifica se o modo claro está ativo para mudar o texto e ícone
             const isLight = document.body.classList.contains('light-theme');
             if (isLight) {
                 themeIcon.textContent = '☀️';
@@ -42,65 +28,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================================================
-    // 2. FILTROS E BUSCA NA GALERIA DE DESENVOLVEDORES
+    // 2. FILTROS E BUSCA NA GALERIA COM "MOSTRAR MAIS"
     // ======================================================
     const searchInput = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const devCards = document.querySelectorAll('.dev-card');
     const devCountMessage = document.getElementById('devCountMessage');
+    const btnToggleDevs = document.getElementById('btnToggleDevs');
+    const btnToggleDevsText = document.getElementById('btnToggleDevsText');
+    const loadMoreContainer = document.getElementById('loadMoreDevsContainer');
 
-    // Variável para guardar a categoria atualmente selecionada
+    // Quantidade inicial de cards a serem exibidos
+    const LIMITE_INICIAL_DEVS = 6;
+    let devsExpandido = false;
     let currentCategory = 'all';
 
-    // Função que aplica a busca e o filtro de categoria juntos
     function filtrarDesenvolvedores() {
         const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
-        let visiveis = 0;
+        let totalCorrespondentes = 0;
+        let visiveisExibidos = 0;
 
         devCards.forEach(card => {
             const cardText = card.textContent.toLowerCase();
-            const cardCategory = card.getAttribute('data-category');
+            const cardCategory = (card.getAttribute('data-category') || '').toLowerCase();
 
-            // Checa se o card bate com o texto pesquisado
             const matchesSearch = cardText.includes(query);
+            const matchesCategory = (currentCategory === 'all') || (cardCategory === currentCategory.toLowerCase());
 
-            // Checa se o card bate com a categoria selecionada (ou se está em 'all')
-            const matchesCategory = (currentCategory === 'all') || (cardCategory === currentCategory);
-
-            // Se bater em ambos, mostra o card. Senão, esconde.
             if (matchesSearch && matchesCategory) {
-                card.style.display = 'flex';
-                visiveis++;
+                totalCorrespondentes++;
+                // Mostra todos se estiver expandido, ou apenas até o limite inicial
+                if (devsExpandido || visiveisExibidos < LIMITE_INICIAL_DEVS) {
+                    card.style.display = 'flex';
+                    card.classList.remove('dev-hidden');
+                    visiveisExibidos++;
+                } else {
+                    card.style.display = 'none';
+                    card.classList.add('dev-hidden');
+                }
             } else {
                 card.style.display = 'none';
+                card.classList.remove('dev-hidden');
             }
         });
 
-        // Atualiza a mensagem com a contagem de devs visíveis
+        // Atualiza a contagem exibida
         if (devCountMessage) {
-            devCountMessage.textContent = `Exibindo ${visiveis} de ${devCards.length} desenvolvedor(es)`;
+            devCountMessage.textContent = `Exibindo ${visiveisExibidos} de ${totalCorrespondentes} desenvolvedor(es)`;
+        }
+
+        // Controla exibição do botão Mostrar Mais
+        if (loadMoreContainer && btnToggleDevs && btnToggleDevsText) {
+            if (totalCorrespondentes <= LIMITE_INICIAL_DEVS) {
+                loadMoreContainer.style.display = 'none';
+            } else {
+                loadMoreContainer.style.display = 'flex';
+                btnToggleDevsText.textContent = devsExpandido ? 'Mostrar Menos' : 'Mostrar Mais Desenvolvedores';
+                const icon = btnToggleDevs.querySelector('.btn-load-more-icon');
+                if (icon) icon.textContent = devsExpandido ? '↑' : '↓';
+            }
         }
     }
 
-    // Ouvinte para quando o usuário digita na barra de pesquisa
-    if (searchInput) {
-        searchInput.addEventListener('input', filtrarDesenvolvedores);
+    // Clique no botão Mostrar Mais / Mostrar Menos
+    if (btnToggleDevs) {
+        btnToggleDevs.addEventListener('click', () => {
+            devsExpandido = !devsExpandido;
+            filtrarDesenvolvedores();
+            if (!devsExpandido) {
+                document.getElementById('devs')?.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     }
 
-    // Ouvinte para os botões de filtro (Todos, Back-End, Front-End, Dados)
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            devsExpandido = false;
+            filtrarDesenvolvedores();
+        });
+    }
+
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove a classe 'active' de todos os botões e adiciona no clicado
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Atualiza a categoria atual e refiltra os cards
             currentCategory = btn.getAttribute('data-filter');
+            devsExpandido = false;
             filtrarDesenvolvedores();
         });
     });
 
-    // Roda uma vez no início para contar os cards iniciais
     filtrarDesenvolvedores();
 
     // ======================================================
@@ -114,10 +131,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (questionBtn) {
             questionBtn.addEventListener('click', () => {
-                // Verifica se este item já está aberto
                 const isOpen = item.classList.contains('active');
 
-                // Fecha todos os outros itens para manter o site organizado
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
                     const otherBtn = otherItem.querySelector('.faq-question');
@@ -126,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (otherIcon) otherIcon.textContent = '+';
                 });
 
-                // Se não estava aberto, abre este
                 if (!isOpen) {
                     item.classList.add('active');
                     questionBtn.setAttribute('aria-expanded', 'true');
@@ -136,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // ======================================================
     // 4. FORMULÁRIO DE CONTATO (FEEDBACK AMIGÁVEL)
     // ======================================================
@@ -145,72 +158,136 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Impede o recarregamento da página
-
+            e.preventDefault();
             const name = document.getElementById('contactName').value;
 
-            // Mostra mensagem de sucesso
             if (formFeedback) {
                 formFeedback.textContent = `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Nossa coordenação entrará em contato em breve.`;
                 formFeedback.className = 'form-feedback success';
                 formFeedback.style.display = 'block';
             }
 
-            // Limpa os campos do formulário
             contactForm.reset();
 
-            // Oculta a mensagem após 6 segundos
             setTimeout(() => {
                 if (formFeedback) formFeedback.style.display = 'none';
             }, 6000);
         });
     }
 
+    // ======================================================
+    // 5. NAVEGAÇÃO DAS TRILHAS E FILTROS DE PROJETOS POR TECNOLOGIA
+    // ======================================================
+    const projCards = document.querySelectorAll('.project-card');
+    const projTrackButtons = document.querySelectorAll('.proj-filter-btn');
+    const projTechChips = document.querySelectorAll('.tech-chip');
+    let currentProjTrack = 'all';
+    let currentProjTech = 'all';
+
+    function filtrarProjetos() {
+        projCards.forEach(card => {
+            const cardTrack = (card.getAttribute('data-track') || '').toLowerCase();
+            const cardTechs = (card.getAttribute('data-techs') || '').toLowerCase();
+
+            const matchTrack = (currentProjTrack === 'all') || (cardTrack === currentProjTrack.toLowerCase());
+            const matchTech = (currentProjTech === 'all') || (cardTechs.includes(currentProjTech.toLowerCase()));
+
+            if (matchTrack && matchTech) {
+                card.style.display = 'flex';
+                card.classList.remove('proj-hidden');
+            } else {
+                card.style.display = 'none';
+                card.classList.add('proj-hidden');
+            }
+        });
+    }
+
+    projTrackButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            projTrackButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentProjTrack = btn.getAttribute('data-proj-track');
+            filtrarProjetos();
+        });
+    });
+
+    projTechChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            projTechChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentProjTech = chip.getAttribute('data-proj-tech');
+            filtrarProjetos();
+        });
+    });
+
+    // Ao clicar em uma trilha na seção de formação:
+    // Leva para a seção de projetos com o filtro correspondente ativo
+    const clickableTracks = document.querySelectorAll('.clickable-track');
+    clickableTracks.forEach(track => {
+        track.addEventListener('click', () => {
+            const targetTrack = track.getAttribute('data-track-target');
+            if (!targetTrack) return;
+
+            currentProjTrack = targetTrack;
+            currentProjTech = 'all';
+
+            projTrackButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-proj-track') === targetTrack);
+            });
+            projTechChips.forEach(chip => {
+                chip.classList.toggle('active', chip.getAttribute('data-proj-tech') === 'all');
+            });
+
+            filtrarProjetos();
+            document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
 });
 
 // ======================================================
-    // 5. CARROSSEL DE FOTOS DOS POLOS
-    // ======================================================
-    const cards = document.querySelectorAll('.polo-card');
+// 6. CARROSSEL DE FOTOS DOS POLOS
+// ======================================================
+const cards = document.querySelectorAll('.polo-card');
 
-    cards.forEach(card => {
-        const track = card.querySelector('.carousel-track');
-        if (!track) return;
+cards.forEach(card => {
+    const track = card.querySelector('.carousel-track');
+    if (!track) return;
 
-        const slides = track.querySelectorAll('.polo-img');
-        const nextButton = card.querySelector('.next-btn');
-        const prevButton = card.querySelector('.prev-btn');
-        const indicators = card.querySelectorAll('.indicator');
-        
-        let currentIndex = 0;
+    const slides = track.querySelectorAll('.polo-img');
+    const nextButton = card.querySelector('.next-btn');
+    const prevButton = card.querySelector('.prev-btn');
+    const indicators = card.querySelectorAll('.indicator');
+    
+    let currentIndex = 0;
 
-        function updateCarousel(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
-            });
-            currentIndex = index;
-        }
-
-        if (nextButton) {
-            nextButton.addEventListener('click', () => {
-                let nextIndex = (currentIndex + 1) % slides.length;
-                updateCarousel(nextIndex);
-            });
-        }
-
-        if (prevButton) {
-            prevButton.addEventListener('click', () => {
-                let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateCarousel(prevIndex);
-            });
-        }
-
+    function updateCarousel(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
         indicators.forEach((indicator, i) => {
-            indicator.addEventListener('click', () => {
-                updateCarousel(i);
-            });
+            indicator.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+    }
+
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            let nextIndex = (currentIndex + 1) % slides.length;
+            updateCarousel(nextIndex);
+        });
+    }
+
+    if (prevButton) {
+        prevButton.addEventListener('click', () => {
+            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel(prevIndex);
+        });
+    }
+
+    indicators.forEach((indicator, i) => {
+        indicator.addEventListener('click', () => {
+            updateCarousel(i);
         });
     });
+});
