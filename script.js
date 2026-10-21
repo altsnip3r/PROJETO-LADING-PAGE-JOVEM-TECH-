@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ======================================================
     // 2. FILTROS E BUSCA NA GALERIA COM RECURSO "MOSTRAR MAIS"
-    // (Funciona diretamente com seus cards escritos no HTML!)
     // ======================================================
     const searchInput = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -51,13 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
         let totalCorrespondentes = 0;
         let visiveisExibidos = 0;
 
+        // Função que normaliza strings (ex: "Backend", "Back-End", "backend" viram todos "backend")
+        const normalizar = (txt) => (txt || '').toLowerCase().replace(/[-\s]/g, '');
+        const filtroAtual = normalizar(currentCategory);
+
         devCards.forEach(card => {
             const cardText = card.textContent.toLowerCase();
-            const cardCategory = (card.getAttribute('data-category') || '').toLowerCase();
+            const cardCategory = normalizar(card.getAttribute('data-category'));
 
             // Checa se o card bate com a pesquisa e categoria
             const matchesSearch = cardText.includes(query);
-            const matchesCategory = (currentCategory === 'all') || (cardCategory === currentCategory.toLowerCase());
+            const matchesCategory = (filtroAtual === 'all') || (cardCategory === filtroAtual);
 
             if (matchesSearch && matchesCategory) {
                 totalCorrespondentes++;
@@ -122,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             filterButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            currentCategory = btn.getAttribute('data-filter');
+            currentCategory = btn.getAttribute('data-filter') || 'all';
             devsExpandido = false;
             filtrarDesenvolvedores();
         });
@@ -133,12 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ======================================================
     // 2.1 BOLINHA DE "+N" INTELIGENTE (SÓ APARECE SE ULTRAPASSAR 2 LINHAS)
     // Se as habilidades couberem em até 2 linhas, mostra todas diretamente!
-    // Se ultrapassar 2 linhas (mudaria o tamanho do card), agrupa o excesso em "+N".
+    // Se ultrapassar 2 linhas (mudaria a altura do card), agrupa o excesso em "+N".
     // ======================================================
     function inicializarBolinhasSkills() {
         const skillsContainers = document.querySelectorAll('.dev-skills');
 
         skillsContainers.forEach(container => {
+            // Se já tiver bolinha criada, não recria
             if (container.querySelector('.skill-more')) return;
 
             // Se o card estiver oculto no momento, aguarda ele ficar visível
@@ -152,67 +156,73 @@ document.addEventListener('DOMContentLoaded', () => {
             const tagsExcedentes = tags.filter(tag => (tag.offsetTop - firstTagTop) > 38);
 
             if (tagsExcedentes.length > 0) {
-                const primeiroIndiceExcedente = tags.indexOf(tagsExcedentes[0]);
-                const tagsOcultas = tags.slice(primeiroIndiceExcedente);
+                // Cria a bolinha "+N"
+                const moreBtn = document.createElement('span');
+                moreBtn.className = 'skill-tag skill-more';
+                moreBtn.textContent = `+${tagsExcedentes.length}`;
+                moreBtn.title = 'Clique para ver todas as habilidades';
 
-                tagsOcultas.forEach(tag => tag.classList.add('skill-hidden'));
+                // Oculta as tags que sobraram para não deformar o card
+                tagsExcedentes.forEach(tag => tag.style.display = 'none');
 
-                const badgeMore = document.createElement('span');
-                badgeMore.className = 'skill-tag skill-more';
-                badgeMore.title = 'Clique para ver todas as habilidades';
-                badgeMore.textContent = `+${tagsOcultas.length}`;
-
-                let expandido = false;
-                badgeMore.addEventListener('click', (e) => {
+                // Ao clicar na bolinha, ela expande revelando todas as tags
+                moreBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    expandido = !expandido;
-                    tagsOcultas.forEach(tag => {
-                        tag.classList.toggle('skill-hidden', !expandido);
-                    });
-                    badgeMore.textContent = expandido ? '−' : `+${tagsOcultas.length}`;
-                    badgeMore.title = expandido ? 'Clique para recolher' : 'Clique para ver todas as habilidades';
+                    const isExpanded = moreBtn.classList.toggle('expanded');
+                    if (isExpanded) {
+                        tagsExcedentes.forEach(tag => tag.style.display = 'inline-block');
+                        moreBtn.textContent = '−';
+                        moreBtn.title = 'Clique para recolher';
+                    } else {
+                        tagsExcedentes.forEach(tag => tag.style.display = 'none');
+                        moreBtn.textContent = `+${tagsExcedentes.length}`;
+                        moreBtn.title = 'Clique para ver todas as habilidades';
+                    }
                 });
 
-                container.appendChild(badgeMore);
+                container.appendChild(moreBtn);
             }
         });
     }
 
-    // Executa a medição assim que os cards estiverem renderizados no navegador
-    setTimeout(inicializarBolinhasSkills, 100);
-
-    // ======================================================
-    // 3. PERGUNTAS FREQUENTES (FAQ ACCORDION)
-    // ======================================================
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    faqItems.forEach(item => {
-        const questionBtn = item.querySelector('.faq-question');
-        const icon = item.querySelector('.faq-icon');
-
-        if (questionBtn) {
-            questionBtn.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-
-                faqItems.forEach(otherItem => {
-                    otherItem.classList.remove('active');
-                    const otherBtn = otherItem.querySelector('.faq-question');
-                    const otherIcon = otherItem.querySelector('.faq-icon');
-                    if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-                    if (otherIcon) otherIcon.textContent = '+';
-                });
-
-                if (!isOpen) {
-                    item.classList.add('active');
-                    questionBtn.setAttribute('aria-expanded', 'true');
-                    if (icon) icon.textContent = '−';
-                }
-            });
-        }
+    // Recalcula as bolinhas se o usuário redimensionar a janela do navegador
+    window.addEventListener('resize', () => {
+        document.querySelectorAll('.skill-more').forEach(btn => btn.remove());
+        document.querySelectorAll('.dev-skills .skill-tag').forEach(tag => tag.style.display = '');
+        inicializarBolinhasSkills();
     });
 
     // ======================================================
-    // 4. FORMULÁRIO DE CONTATO (FEEDBACK AMIGÁVEL)
+    // 3. FAQ INTERATIVO (ACCORDION / SANFONA)
+    // ======================================================
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            
+            // Fecha todas as outras perguntas abertas
+            faqQuestions.forEach(q => {
+                q.setAttribute('aria-expanded', 'false');
+                const answer = q.nextElementSibling;
+                if (answer) answer.classList.remove('open');
+                const icon = q.querySelector('.faq-icon');
+                if (icon) icon.textContent = '+';
+            });
+
+            // Se não estava aberta, abre a atual
+            if (!isExpanded) {
+                question.setAttribute('aria-expanded', 'true');
+                const answer = question.nextElementSibling;
+                if (answer) answer.classList.add('open');
+                const icon = question.querySelector('.faq-icon');
+                if (icon) icon.textContent = '−';
+            }
+        });
+    });
+
+    // ======================================================
+    // 4. FORMULÁRIO DE CONTATO (SIMULAÇÃO DE ENVIO)
     // ======================================================
     const contactForm = document.getElementById('contactForm');
     const formFeedback = document.getElementById('formFeedback');
@@ -221,10 +231,21 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const name = document.getElementById('contactName').value;
+            const name = document.getElementById('contactName')?.value.trim();
+            const email = document.getElementById('contactEmail')?.value.trim();
 
+            if (!name || !email) {
+                if (formFeedback) {
+                    formFeedback.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+                    formFeedback.className = 'form-feedback error';
+                    formFeedback.style.display = 'block';
+                }
+                return;
+            }
+
+            // Simula envio com sucesso
             if (formFeedback) {
-                formFeedback.textContent = `Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Nossa coordenação entrará em contato em breve.`;
+                formFeedback.textContent = `Obrigado, ${name}! Sua mensagem foi enviada à coordenação do Jovem Tech.`;
                 formFeedback.className = 'form-feedback success';
                 formFeedback.style.display = 'block';
             }
@@ -238,117 +259,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================================================
-    // 5. NAVEGAÇÃO DAS TRILHAS E FILTROS DE PROJETOS POR TECNOLOGIA
+    // 5. CARROSSEL DE FOTOS DOS POLOS
     // ======================================================
-    const projCards = document.querySelectorAll('.project-card');
-    const projTrackButtons = document.querySelectorAll('.proj-filter-btn');
-    const projTechChips = document.querySelectorAll('.tech-chip');
-    let currentProjTrack = 'all';
-    let currentProjTech = 'all';
+    const cards = document.querySelectorAll('.polo-card');
 
-    function filtrarProjetos() {
-        projCards.forEach(card => {
-            const cardTrack = (card.getAttribute('data-track') || '').toLowerCase();
-            const cardTechs = (card.getAttribute('data-techs') || '').toLowerCase();
+    cards.forEach(card => {
+        const track = card.querySelector('.carousel-track');
+        if (!track) return;
 
-            const matchTrack = (currentProjTrack === 'all') || (cardTrack === currentProjTrack.toLowerCase());
-            const matchTech = (currentProjTech === 'all') || (cardTechs.includes(currentProjTech.toLowerCase()));
+        const slides = track.querySelectorAll('.polo-img');
+        const nextButton = card.querySelector('.next-btn');
+        const prevButton = card.querySelector('.prev-btn');
+        const indicators = card.querySelectorAll('.indicator');
+        
+        let currentIndex = 0;
 
-            if (matchTrack && matchTech) {
-                card.style.display = 'flex';
-                card.classList.remove('proj-hidden');
-            } else {
-                card.style.display = 'none';
-                card.classList.add('proj-hidden');
+        function updateCarousel(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(ind => ind.classList.remove('active'));
+
+            slides[index].classList.add('active');
+            if (indicators[index]) {
+                indicators[index].classList.add('active');
             }
-        });
-    }
+            currentIndex = index;
+        }
 
-    projTrackButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            projTrackButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentProjTrack = btn.getAttribute('data-proj-track');
-            filtrarProjetos();
-        });
-    });
-
-    projTechChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            projTechChips.forEach(c => c.classList.remove('active'));
-            chip.classList.add('active');
-            currentProjTech = chip.getAttribute('data-proj-tech');
-            filtrarProjetos();
-        });
-    });
-
-    // Ao clicar nos cards de trilha na seção de formação (Front-End, Back-End, Dados, Fullstack):
-    const clickableTracks = document.querySelectorAll('.clickable-track');
-    clickableTracks.forEach(track => {
-        track.addEventListener('click', () => {
-            const targetTrack = track.getAttribute('data-track-target');
-            if (!targetTrack) return;
-
-            currentProjTrack = targetTrack;
-            currentProjTech = 'all';
-
-            projTrackButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-proj-track') === targetTrack);
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= slides.length) {
+                    nextIndex = 0;
+                }
+                updateCarousel(nextIndex);
             });
-            projTechChips.forEach(chip => {
-                chip.classList.toggle('active', chip.getAttribute('data-proj-tech') === 'all');
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) {
+                    prevIndex = slides.length - 1;
+                }
+                updateCarousel(prevIndex);
             });
+        }
 
-            filtrarProjetos();
-            document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-
-});
-
-// ======================================================
-// 6. CARROSSEL DE FOTOS DOS POLOS
-// ======================================================
-const cards = document.querySelectorAll('.polo-card');
-
-cards.forEach(card => {
-    const track = card.querySelector('.carousel-track');
-    if (!track) return;
-
-    const slides = track.querySelectorAll('.polo-img');
-    const nextButton = card.querySelector('.next-btn');
-    const prevButton = card.querySelector('.prev-btn');
-    const indicators = card.querySelectorAll('.indicator');
-    
-    let currentIndex = 0;
-
-    function updateCarousel(index) {
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
         indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
-        });
-        currentIndex = index;
-    }
-
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            let nextIndex = (currentIndex + 1) % slides.length;
-            updateCarousel(nextIndex);
-        });
-    }
-
-    if (prevButton) {
-        prevButton.addEventListener('click', () => {
-            let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateCarousel(prevIndex);
-        });
-    }
-
-    indicators.forEach((indicator, i) => {
-        indicator.addEventListener('click', () => {
-            updateCarousel(i);
+            indicator.addEventListener('click', () => {
+                updateCarousel(i);
+            });
         });
     });
+
 });
