@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeBtn) {
         themeBtn.addEventListener('click', () => {
+            // Adiciona ou remove a classe 'light-theme' no <body>
             document.body.classList.toggle('light-theme');
 
+            // Verifica se o modo claro está ativo para mudar o texto e ícone
             const isLight = document.body.classList.contains('light-theme');
             if (isLight) {
                 themeIcon.textContent = '☀️';
@@ -28,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ======================================================
-    // 2. FILTROS E BUSCA NA GALERIA COM "MOSTRAR MAIS"
+    // 2. FILTROS E BUSCA NA GALERIA COM RECURSO "MOSTRAR MAIS"
+    // (Funciona diretamente com seus cards escritos no HTML!)
     // ======================================================
     const searchInput = document.getElementById('searchInput');
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -38,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnToggleDevsText = document.getElementById('btnToggleDevsText');
     const loadMoreContainer = document.getElementById('loadMoreDevsContainer');
 
-    // Quantidade inicial de cards a serem exibidos
+    // Limite inicial de desenvolvedores exibidos (para manter o layout limpo)
     const LIMITE_INICIAL_DEVS = 6;
     let devsExpandido = false;
     let currentCategory = 'all';
@@ -52,12 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardText = card.textContent.toLowerCase();
             const cardCategory = (card.getAttribute('data-category') || '').toLowerCase();
 
+            // Checa se o card bate com a pesquisa e categoria
             const matchesSearch = cardText.includes(query);
             const matchesCategory = (currentCategory === 'all') || (cardCategory === currentCategory.toLowerCase());
 
             if (matchesSearch && matchesCategory) {
                 totalCorrespondentes++;
-                // Mostra todos se estiver expandido, ou apenas até o limite inicial
+                // Se expandido, mostra todos. Se não, mostra apenas até o limite inicial
                 if (devsExpandido || visiveisExibidos < LIMITE_INICIAL_DEVS) {
                     card.style.display = 'flex';
                     card.classList.remove('dev-hidden');
@@ -72,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Atualiza a contagem exibida
+        // Atualiza mensagem com contagem de devs
         if (devCountMessage) {
             devCountMessage.textContent = `Exibindo ${visiveisExibidos} de ${totalCorrespondentes} desenvolvedor(es)`;
         }
 
-        // Controla exibição do botão Mostrar Mais
+        // Controla exibição e texto do botão Mostrar Mais
         if (loadMoreContainer && btnToggleDevs && btnToggleDevsText) {
             if (totalCorrespondentes <= LIMITE_INICIAL_DEVS) {
                 loadMoreContainer.style.display = 'none';
@@ -88,19 +92,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (icon) icon.textContent = devsExpandido ? '↑' : '↓';
             }
         }
+
+        // Inicializa as bolinhas para os cards que ficaram visíveis
+        setTimeout(inicializarBolinhasSkills, 50);
     }
 
-    // Clique no botão Mostrar Mais / Mostrar Menos
+    // Ouvinte para o botão Mostrar Mais / Mostrar Menos
     if (btnToggleDevs) {
         btnToggleDevs.addEventListener('click', () => {
             devsExpandido = !devsExpandido;
             filtrarDesenvolvedores();
+            // Ao recolher, rola suavemente para o início da galeria
             if (!devsExpandido) {
                 document.getElementById('devs')?.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
 
+    // Ouvinte da barra de pesquisa
     if (searchInput) {
         searchInput.addEventListener('input', () => {
             devsExpandido = false;
@@ -108,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Ouvinte dos botões de filtro da galeria
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             filterButtons.forEach(b => b.classList.remove('active'));
@@ -119,6 +129,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     filtrarDesenvolvedores();
+
+    // ======================================================
+    // 2.1 BOLINHA DE "+N" INTELIGENTE (SÓ APARECE SE ULTRAPASSAR 2 LINHAS)
+    // Se as habilidades couberem em até 2 linhas, mostra todas diretamente!
+    // Se ultrapassar 2 linhas (mudaria o tamanho do card), agrupa o excesso em "+N".
+    // ======================================================
+    function inicializarBolinhasSkills() {
+        const skillsContainers = document.querySelectorAll('.dev-skills');
+
+        skillsContainers.forEach(container => {
+            if (container.querySelector('.skill-more')) return;
+
+            // Se o card estiver oculto no momento, aguarda ele ficar visível
+            if (container.offsetParent === null) return;
+
+            const tags = Array.from(container.querySelectorAll('.skill-tag:not(.skill-more)'));
+            if (tags.length <= 4) return; // 4 ou menos sempre cabe perfeitamente
+
+            const firstTagTop = tags[0].offsetTop;
+            // Identifica tags que caem na 3ª linha (diferença de altura maior que 38px)
+            const tagsExcedentes = tags.filter(tag => (tag.offsetTop - firstTagTop) > 38);
+
+            if (tagsExcedentes.length > 0) {
+                const primeiroIndiceExcedente = tags.indexOf(tagsExcedentes[0]);
+                const tagsOcultas = tags.slice(primeiroIndiceExcedente);
+
+                tagsOcultas.forEach(tag => tag.classList.add('skill-hidden'));
+
+                const badgeMore = document.createElement('span');
+                badgeMore.className = 'skill-tag skill-more';
+                badgeMore.title = 'Clique para ver todas as habilidades';
+                badgeMore.textContent = `+${tagsOcultas.length}`;
+
+                let expandido = false;
+                badgeMore.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    expandido = !expandido;
+                    tagsOcultas.forEach(tag => {
+                        tag.classList.toggle('skill-hidden', !expandido);
+                    });
+                    badgeMore.textContent = expandido ? '−' : `+${tagsOcultas.length}`;
+                    badgeMore.title = expandido ? 'Clique para recolher' : 'Clique para ver todas as habilidades';
+                });
+
+                container.appendChild(badgeMore);
+            }
+        });
+    }
+
+    // Executa a medição assim que os cards estiverem renderizados no navegador
+    setTimeout(inicializarBolinhasSkills, 100);
 
     // ======================================================
     // 3. PERGUNTAS FREQUENTES (FAQ ACCORDION)
@@ -159,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
             const name = document.getElementById('contactName').value;
 
             if (formFeedback) {
@@ -220,8 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Ao clicar em uma trilha na seção de formação:
-    // Leva para a seção de projetos com o filtro correspondente ativo
+    // Ao clicar nos cards de trilha na seção de formação (Front-End, Back-End, Dados, Fullstack):
     const clickableTracks = document.querySelectorAll('.clickable-track');
     clickableTracks.forEach(track => {
         track.addEventListener('click', () => {

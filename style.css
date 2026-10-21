@@ -483,7 +483,7 @@ img {
   font-weight: 700;
 }
 
-/* Grade das 3 trilhas na etapa 2 */
+/* Grade das trilhas na etapa 2 */
 .tracks-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -523,6 +523,11 @@ img {
   color: #34d399;
 }
 
+.tag-fullstack {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
 .track-item h4 {
   font-size: 1rem;
   margin-bottom: 0.4rem;
@@ -550,7 +555,7 @@ img {
 }
 
 .polo-card {
-  display: flex; /* Coloca a imagem à esquerda e o texto à direita */
+  display: flex;
   flex-direction: row;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -566,7 +571,7 @@ img {
 
 .polo-img-wrapper {
   position: relative;
-  width: 50%; /* Ocupa a metade esquerda */
+  width: 50%;
   min-height: 575px;
   overflow: hidden;
   background-color: #071120;
@@ -588,18 +593,17 @@ img {
 }
 
 .polo-info {
-  width: 50%; /* Ocupa a metade direita (texto) */
+  width: 50%;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Tag/Badge destacada em cima do título */
 .polo-badge {
   display: inline-block;
-  align-self: flex-start; /* Faz a tag ocupar apenas o espaço do seu texto */
-  margin-bottom: 0.8rem;  /* Espaço entre a tag e o título */
+  align-self: flex-start;
+  margin-bottom: 0.8rem;
   background-color: rgba(0, 255, 135, 0.1);
   color: var(--accent-green);
   font-size: 0.75rem;
@@ -628,7 +632,7 @@ img {
   line-height: 1.6;
 }
 
-/* Responsivo para celulares (volta a empilhar a imagem em cima do texto) */
+/* Responsivo para celulares dos polos */
 @media (max-width: 768px) {
   .polo-card {
     flex-direction: column;
@@ -720,7 +724,7 @@ img {
   align-items: stretch;
 }
 
-/* Card uniforme com altura igual */
+/* Card uniforme com altura igual e flexbox vertical */
 .dev-card {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -728,7 +732,7 @@ img {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   height: 100%;
   box-sizing: border-box;
   transition: transform 0.2s ease, border-color 0.2s ease;
@@ -739,22 +743,13 @@ img {
   border-color: var(--accent-green);
 }
 
-/* Empurra o rodapé para baixo, nivelando todos os botões */
-.dev-bio {
-  flex-grow: 1;
-}
-
-/* Oculta os cards adicionais até o clique em Mostrar Mais */
-.dev-card.dev-hidden {
-  display: none !important;
-}
-
 /* Topo do card: foto + informações */
 .card-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  padding-top: 0.3rem;
 }
 
 /* Foto redonda uniforme */
@@ -819,24 +814,74 @@ img {
   color: var(--text-muted);
 }
 
+/* Bio limpa e direta: sem barra de rolagem, fluindo com elegância */
+.dev-bio {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.2rem;
+  flex-grow: 1; /* Mantém os cards nivelados empurrando o rodapé para a base */
+}
+
+/* Bloco de habilidades limpo: sem rolagem, com bolinha de + para tags extras */
 .dev-skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.5rem;
+  align-items: center;
+  align-content: flex-start;
+  gap: 0.45rem;
+  margin-bottom: 1.2rem;
+  min-height: 58px; /* Mantém altura consistente entre os cards */
 }
 
 .skill-tag {
+  display: inline-flex;
+  align-items: center;
   background-color: var(--tag-bg);
   color: var(--text-main);
   font-size: 0.72rem;
   font-weight: 500;
   padding: 0.25rem 0.55rem;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid var(--card-border);
+  white-space: nowrap;
+  line-height: 1.2;
+  transition: all 0.2s ease;
 }
 
+.skill-tag:hover {
+  border-color: rgba(0, 255, 135, 0.4);
+}
+
+/* Bolinha / Badge de "+N" para habilidades extras (UX Moderna e Limpa) */
+.skill-tag.skill-more {
+  background-color: rgba(0, 255, 135, 0.12);
+  color: var(--accent-green);
+  border: 1px dashed rgba(0, 255, 135, 0.45);
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 0.22rem 0.6rem;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.skill-tag.skill-more:hover {
+  background-color: var(--accent-green);
+  color: #050b14;
+  border-style: solid;
+  transform: scale(1.06);
+  box-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
+}
+
+/* Tags que ficam recolhidas até clicar na bolinha de + */
+.skill-tag.skill-hidden {
+  display: none !important;
+}
+
+/* Rodapé do card fixado na base */
 .card-footer {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -880,6 +925,11 @@ img {
   color: #050b14;
 }
 
+/* Oculta os cards adicionais até o clique em Mostrar Mais */
+.dev-card.dev-hidden {
+  display: none !important;
+}
+
 /* ========================================================
    ESTILOS DO BOTÃO MOSTRAR MAIS E NOVAS TRILHAS
    ======================================================== */
@@ -897,7 +947,7 @@ img {
   padding: 0.75rem 1.75rem;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  color: var(--text-primary);
+  color: var(--text-main);
   font-weight: 600;
   font-size: 0.875rem;
   border-radius: 8px;
@@ -925,11 +975,6 @@ img {
 .track-item.clickable-track:hover {
   transform: translateY(-4px);
   border-color: var(--accent-green);
-}
-
-.tag-fullstack {
-  background-color: rgba(245, 158, 11, 0.2);
-  color: #fbbf24;
 }
 
 /* Filtros por tecnologia na seção de projetos */
@@ -1010,7 +1055,6 @@ img {
 .project-card.proj-hidden {
   display: none !important;
 }
-
 
 /* ========================================================== */
 /* SEÇÃO PROJETOS EM DESTAQUE                                 */
