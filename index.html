@@ -50,10 +50,22 @@
         <!-- SEÇÃO HERO / APRESENTAÇÃO PRINCIPAL        -->
         <!-- ========================================== -->
         <section class="hero" id="home">
+            <!-- Camada Cinematográfica com a Foto Real dos Alunos e Boa Visibilidade -->
+            <div class="hero-bg-media" aria-hidden="true">
+                <img src="fotoshub/alunospulse.jpg" alt="Alunos do Programa Jovem Tech" class="hero-bg-img" id="heroBgImg" />
+                <div class="hero-bg-overlay"></div>
+                <div class="hero-bg-glow"></div>
+            </div>
+
             <div class="hero-container">
+                <div class="hero-tagline">
+                    <span class="hero-tag-pulse"></span>
+                </div>
+
                 <h1 class="hero-title">
                     A vitrine dos novos <span>Desenvolvedores</span> do Maranhão
                 </h1>
+                
                 <p class="hero-subtitle">
                     Bem-vindo ao portal institucional do <strong>Jovem Tech</strong>. Aqui você encontra os projetos,
                     portfólios e os perfis dos novos talentos prontos para transformar o mercado de tecnologia com inovação e impacto social.
@@ -64,7 +76,7 @@
                     <a href="#sobre" class="btn-secondary" id="btnHeroSobre">Sobre o Programa</a>
                 </div>
 
-                <!-- Indicadores de destaque do programa -->
+                <!-- Indicadores com Glassmorphism Translúcido -->
                 <div class="hero-stats" id="heroStats">
                     <div class="stat-card">
                         <span class="stat-number">60</span>
@@ -85,6 +97,8 @@
                 </div>
             </div>
         </section>
+
+
 
         <!-- ========================================== -->
         <!-- SEÇÃO: SOBRE O PROGRAMA                    -->
@@ -269,89 +283,94 @@
         </section>
 
         <!-- ========================================== -->
-        <!-- SEÇÃO: POLOS E ANEXOS                      -->
+        <!-- SEÇÃO: POLOS E ESTRUTURA -->
         <!-- ========================================== -->
         <section class="polos-section" id="polos">
-    <div class="section-container">
-        <div class="section-header">
-            <h2>Polos e <span>Anexos</span></h2>
-            <p class="section-subtitle">
-                Ambientes físicos modernos estruturados para mentoria técnica, desenvolvimento prático e treinamento comportamental.
-            </p>
-        </div>
+            <div class="section-container">
+                <div class="section-header">
+                    <span class="section-tag">Espaços de Inovação</span>
+                    <h2>Polos & <span>Estrutura</span></h2>
+                    <p class="section-subtitle">
+                        Conheça nossos ambientes de inovação e prática presencial.
+                    </p>
 
-        <div class="polos-grid">
-            <!-- Polo UNDB -->
-            <div class="polo-card">
-                <div class="polo-img-wrapper">
-                    <!-- Track do Carrossel (Coloque quantas fotos quiser aqui dentro) -->
-                    <div class="carousel-track">
-                        <img src="fotoshub/hub_undb.jpg" alt="Foto do HUB da UNDB - 1" class="polo-img active">
-                        <!-- <img src="fotos/hub_undb_3.jpg" alt="Foto do HUB da UNDB - 3" class="polo-img"> -->
-                    </div>
-
-                    <!-- Botões de Navegação (Setas Tech) -->
-                    <button class="carousel-btn prev-btn" aria-label="Foto anterior">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
-                    <button class="carousel-btn next-btn" aria-label="Próxima foto">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-
-                    <!-- Indicadores (Bolinhas) -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-index="0"></span>
-                        <span class="indicator" data-index="1"></span>
+                    <!-- Seletor dos Polos (Design Minimalista de Vidro) -->
+                    <div class="spatial-polo-tabs" role="tablist" aria-label="Selecione o polo">
+                        <button class="spatial-tab active" data-polo="undb" role="tab" aria-selected="true" type="button" id="tabPoloUndb">
+                            <span class="tab-dot"></span>
+                            <span class="tab-label">Polo HUB UNDB</span>
+                            <span class="tab-sub">Renascença</span>
+                        </button>
+                        <button class="spatial-tab" data-polo="pulse" role="tab" aria-selected="false" type="button" id="tabPoloPulse">
+                            <span class="tab-dot"></span>
+                            <span class="tab-label">Anexo PULSE</span>
+                            <span class="tab-sub">Cohama</span>
+                        </button>
                     </div>
                 </div>
 
-                <div class="polo-info">
-                    <span class="polo-badge">POLO PRINCIPAL</span>
-                    <h3>HUB da UNDB</h3>
-                    <p class="polo-location">📍 Bairro do Renascença - São Luís/MA</p>
-                    <p>
-                        O polo principal do programa conta com laboratórios modernos equipados com computadores de alta performance,
-                        salas de mentoria e espaços integrados para desenvolvimento coletivo e acompanhamento pedagógico.
-                    </p>
+                <!-- PALCO ESPACIAL AR 3D (FOTO 100% LIMPA E SOLTA NO ESPAÇO) -->
+                <div class="spatial-ar-stage" id="spatialStage">
+                    <!-- Glow Ambiente Holográfico Neon Verde Jovem Tech -->
+                    <div class="spatial-ambient-glow" aria-hidden="true"></div>
+
+                    <!-- Botão Anterior: Seta Verde Neon Flutuante -->
+                    <button class="spatial-nav-btn prev-spatial-btn" type="button" aria-label="Foto anterior" id="spatialPrevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+
+                    <!-- Moldura 3D da Foto (Completamente Limpa, Sem Badges por Cima) -->
+                    <div class="spatial-hologram" id="spatialHologram">
+                        <!-- Reflexo de Luz Especular Suave -->
+                        <div class="spatial-light-sheen" aria-hidden="true"></div>
+
+                        <!-- Track de Fotos: Polo UNDB -->
+                        <div class="spatial-slides-track active-polo" id="track-undb">
+                            <div class="spatial-slide active" data-caption="Fachada & Recepção do HUB Tecnológico">
+                                <img src="fotoshub/hub_undb.jpg" alt="Fachada e recepção do HUB da UNDB">
+                            </div>
+                            <div class="spatial-slide" data-caption="Salas de Mentoria & Contraturno Técnico">
+                                <img src="fotoshub/contraturnoundb.jpg" alt="Contraturno e mentoria técnica no HUB UNDB">
+                            </div>
+                            <div class="spatial-slide" data-caption="Laboratório com Computadores de Alta Performance">
+                                <img src="fotoshub/undb.png" alt="Laboratório com computadores de alta performance">
+                            </div>
+                        </div>
+
+                        <!-- Track de Fotos: Anexo PULSE -->
+                        <div class="spatial-slides-track" id="track-pulse">
+                            <div class="spatial-slide active" data-caption="Entrada & Espaço Criativo PULSE">
+                                <img src="fotoshub/pulse.jpg" alt="Entrada e espaço criativo PULSE">
+                            </div>
+                            <div class="spatial-slide" data-caption="Turma Reunida no Telão & Workshops">
+                                <img src="fotoshub/alunospulse.jpg" alt="Turma reunida no telão do PULSE">
+                            </div>
+                            <div class="spatial-slide" data-caption="Palco de Apresentação de Projetos & Sprints">
+                                <img src="fotoshub/pulsetelao.jpeg" alt="Palco de apresentação de projetos no PULSE">
+                            </div>
+                            <div class="spatial-slide" data-caption="Dinâmica Prática & Robótica LEGO">
+                                <img src="fotoshub/legopulse.jpg" alt="Dinâmica prática e robótica LEGO no PULSE">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botão Próximo: Seta Verde Neon Flutuante -->
+                    <button class="spatial-nav-btn next-spatial-btn" type="button" aria-label="Próxima foto" id="spatialNextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+
+                <!-- Rodapé Minimalista: Apenas Indicadores e Nome da Foto em Tipografia Pura (Zero Caixinhas) -->
+                <div class="spatial-cinema-footer">
+                    <div class="spatial-dots" id="spatialDots">
+                        <!-- Gerado automaticamente via JS -->
+                    </div>
+                    <p class="spatial-photo-title" id="spatialCaptionTitle">Fachada & Recepção do HUB Tecnológico</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Anexo PULSE -->
-            <div class="polo-card">
-                <div class="polo-img-wrapper">
-                    <!-- Track do Carrossel do Anexo PULSE -->
-                    <div class="carousel-track">
-                        <img src="fotoshub/pulse.jpg" alt="Foto do anexo PULSE - 1" class="polo-img active">
-                    </div>
 
-                    <!-- Botões de Navegação (Setas Tech) -->
-                    <button class="carousel-btn prev-btn" aria-label="Foto anterior">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
-                    <button class="carousel-btn next-btn" aria-label="Próxima foto">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-
-                    <!-- Indicadores (Bolinhas) -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-index="0"></span>
-                        <span class="indicator" data-index="1"></span>
-                    </div>
-                </div>
-
-                <div class="polo-info">
-                    <span class="polo-badge">POLO SECUNDÁRIO</span>
-                    <h3>Anexo PULSE</h3>
-                    <p class="polo-location">📍 Bairro da Cohama - São Luís/MA</p>
-                    <p>
-                        Espaço colaborativo de inovação onde acontecem as atividades presenciais de contraturno às quartas e sextas-feiras,
-                        com foco em dinâmicas de grupo, metodologias ágeis, apresentações técnicas e simulações corporativas.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
         <!-- ========================================== -->
         <!-- SEÇÃO: GALERIA DOS DESENVOLVEDORES         -->
         <!-- ========================================== -->
