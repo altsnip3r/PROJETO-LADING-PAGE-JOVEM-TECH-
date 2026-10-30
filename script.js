@@ -460,8 +460,8 @@ document.addEventListener('DOMContentLoaded', () => {
             function updateTilt() {
                 if (!isHovered) return;
                 // Amortecimento suave (LERP) para eliminar movimentos bruscos ou sensibilidade excessiva
-                currentRotateX += (targetRotateX - currentRotateX) * 0.08;
-                currentRotateY += (targetRotateY - currentRotateY) * 0.08;
+                currentRotateX += (targetRotateX - currentRotateX) * 0.05;
+                currentRotateY += (targetRotateY - currentRotateY) * 0.05;
 
                 frame.style.transform = `perspective(1200px) rotateX(${currentRotateX.toFixed(2)}deg) rotateY(${currentRotateY.toFixed(2)}deg) scale3d(1.012, 1.012, 1.012)`;
 
@@ -485,8 +485,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const centerY = rect.height / 2;
 
                 // Ângulo refinado e calibrado: máxima inclinação confortável de ~3.5° a 4°
-                targetRotateX = ((y - centerY) / centerY) * -3.6;
-                targetRotateY = ((x - centerX) / centerX) * 4.0;
+                targetRotateX = ((y - centerY) / centerY) * -4.2;
+                targetRotateY = ((x - centerX) / centerX) * 4.2;
 
                 // Reflexo especular suave e sutil que não ofusca a foto
                 if (sheen) {
